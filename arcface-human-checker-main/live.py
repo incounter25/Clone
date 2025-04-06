@@ -9,12 +9,12 @@ import time
 st.title("📸 실시간 얼굴 판별기")
 st.write("웹캠을 통해 얼굴을 실시간으로 탐지하고 사람이 맞는 경우 표시합니다.")
 
-# 모델 불러오기
+
 face_model = insightface.app.FaceAnalysis(name="buffalo_l", providers=['CPUExecutionProvider'])
 face_model.prepare(ctx_id=0)
 clf = joblib.load("is_human_classifier.pkl")
 
-# 웹캠 시작
+
 run = st.checkbox('▶️ 웹캠 시작')
 
 FRAME_WINDOW = st.image([])
@@ -51,7 +51,7 @@ if run:
                 human_count += 1
 
         FRAME_WINDOW.image(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        time.sleep(0.01)  # 프레임 속도 조절
+        time.sleep(0.01)
 
 else:
     if cap:
